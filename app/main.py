@@ -20,10 +20,15 @@ import requests
 
 app = FastAPI()
 
+origins = [
+    "https://data-pulse-frontend.vercel.app",  # ✅ Your deployed frontend domain
+    "http://localhost:3000",  # optional for local testing
+]
+
 # ✅ Allow frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for local dev
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -223,7 +228,10 @@ def delete_rule(rule_id: int, db: Session = Depends(get_db)):
 def chat_endpoint(req: ChatRequest):
     try:
         response = requests.post(
-            "http://localhost:8000/chat",
+             "https://data-pulse-frontend.vercel.app/chat",
+            #"http://localhost:8000/chat",
+           
+            
             json={
                 "model": "llama3",
                 "messages": [

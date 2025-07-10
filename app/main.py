@@ -20,14 +20,14 @@ import requests
 
 app = FastAPI()
 
-origins = [
-    "https://data-pulse-frontend.vercel.app"
-]
 
 # ✅ Allow frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+    "https://data-pulse-frontend.vercel.app",
+    "http://localhost:3000",
+    "https://datapulse-qusg.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

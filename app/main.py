@@ -21,8 +21,7 @@ import requests
 app = FastAPI()
 
 origins = [
-    "https://data-pulse-frontend.vercel.app",  # ✅ Your deployed frontend domain
-    "http://localhost:3000",  # optional for local testing
+    "https://data-pulse-frontend.vercel.app"
 ]
 
 # ✅ Allow frontend access
